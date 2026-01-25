@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "nombre": "Casa Don Pepe si",
+    "tipo": "casa",
+    "lat": -27.277755,
+    "lng": -58.243561,
+    "telefono": "+5493411234567",
+    "servicios": ["cochera", "wifi"]
+  },
+  {
+    "id": 2,
+    "nombre": "Hotel Central",
+    "tipo": "hotel",
+    "lat": -27.272295, 
+    "lng": -58.242861,
+    "telefono": "+5493417654321",
+    "servicios": ["wifi"]
+  },
+  {
+    "id": 3,
+    "nombre": "Campo El Ombú",
+    "tipo": "caballos",
+    "lat": -27.272215, 
+    "lng": -58.245568,
+    "telefono": "+5493419998888",
+    "servicios": ["cochera"]
+  }
+]
