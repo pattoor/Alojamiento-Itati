@@ -1,11 +1,27 @@
-/* retorno de datos de alojamientos.json; verifica fetch exitoso
-const res = await fetch(URL);
-const text = await res.text();
-console.log(text); */
-
 // --------- Carga de datos de alojamientos ---------
 export async function cargarAlojamientos() {
-  const res = await fetch("https://docs.google.com/spreadsheets/d/1cz--GRqfb9DkLJglELGpT1Y8x1yIZ66-D3JVo1HDWEk/export?format=csv");
+  const resp = await fetch("data/alojamientos.json");
+  const alojamientos = await resp.json();
+  console.log("Alojamientos desde JSON:", alojamientos);  // Agrega esto
+  return alojamientos.map(a => ({ ...a,
+    wifi: a.servicios.includes("wifi"),  // Ajusta según servicios
+    cochera: a.servicios.includes("cochera"),
+    carpa: a.servicios.includes("carpa"),
+    activo: a.servicios.includes("activo")  // se carga igual
+  })).filter(a => a.activo); // Filtra solo activos
+}
+
+
+
+
+
+/* -- fetch desde Google Sheets CSV (alternativa) --
+function toBool(v) { // Convierte "TRUE"/"FALSE" a boolean
+  return String(v).toLowerCase().trim() === "true";
+}
+
+export async function cargarAlojamientos() {
+  const res = await fetch("https://docs.google.com/spreadsheets/d/1kYc7VKXNQ1o_LhQjWqQRbaznu8m8Hm_X_pRBfH-1bgA/export?format=csv");
   const text = await res.text();
   console.log("Dataset:", text);  // Vista preliminar del CSV para debug
 
@@ -15,7 +31,7 @@ export async function cargarAlojamientos() {
   const alojamientos = filas.map(f => {
     //console.log("Procesando fila:", f.trim()); // revisa cada elemento
     const [
-      nombre, tipo, lat, lng, telefono, wifi, cochera, activo
+      nombre, tipo, lat, lng, telefono, wifi, cochera, carpa, activo
     ] = f.split(",");
 
     return {
@@ -23,26 +39,15 @@ export async function cargarAlojamientos() {
       tipo,
       lat: parseFloat(lat) / 1000000,
       lng: parseFloat(lng) / 1000000,
-      telefono,
-      wifi: wifi === "true",
-      cochera: cochera === "true",
-      activo: true  // Asume true por defecto, ya que el filter estaba removiendo todo
+      telefono: telefono.trim(),
+      wifi: toBool(wifi),
+      cochera: toBool(cochera),
+      carpa: toBool(carpa),
+      activo: toBool(activo)  // Asume true por defecto, ya que el filter estaba removiendo todo
     };
   });
 
   console.log("Alojamientos parseados:", alojamientos);  // Agrega esto
   return alojamientos;
 }
-
-/* test de carga de JSON local
-export async function cargarAlojamientos() {
-  const res = await fetch("./data/alojamientos.json");
-  const alojamientos = await res.json();
-  console.log("Alojamientos desde JSON:", alojamientos);  // Agrega esto
-  return alojamientos.map(a => ({
-    ...a,
-    wifi: a.servicios.includes("internet"),  // Ajusta según servicios
-    cochera: a.servicios.includes("cochera"),
-    activo: true  // Asume true
-  }));
-}*/
+*/

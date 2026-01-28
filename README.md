@@ -50,6 +50,7 @@ Esta aplicación web proporciona una opción rápida y visual para encontrar alo
 - Asegúrate de que las coordenadas (lat/lng) sean números decimales válidos.
 - Para producción, sube a un hosting que soporte HTTPS (requerido para algunos navegadores).
 - Si usas Google Sheets, comparte la hoja con permisos de lectura pública.
+- Al pedir la localizacion del alojamiento, poner "pegar el link de google maps de tu alojamiento", y yo compruebo y agrego la dirección. 
+- usamos un sheet espejo, que refleja datos desde un sheet master asi no se comprometen datos privados. 
 
 ¡Disfruta explorando alojamientos en Itatí!</content>
-<parameter name="filePath">e:\code_ex\FL_API-IA\Aloja-Itati\README.md

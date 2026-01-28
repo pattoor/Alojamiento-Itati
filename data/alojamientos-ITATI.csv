@@ -1,0 +1,6 @@
+nombre,tipo,lat,lng,telefono,wifi,cochera,carpa,activo
+Casa Don José,"Casa, Pieza",-27272755,-58242561,11xxxx,TRUE,FALSE,TRUE,TRUE
+Apto Río Vista,Hotel,-27272790,-58242866,22yyyy,TRUE,TRUE,FALSE,TRUE
+Cabaña La Sierra,"Cabaña, Carpas",-27276790,-58242812,33zzzz,FALSE,TRUE,TRUE,TRUE
+Hostal El Viajero,"Cabaña, Pieza",-27472790,-58292866,44aaaa,TRUE,FALSE,FALSE,FALSE
+El viejo Pascuero,Carpas,-27271261,-58239580,1234567890,TRUE,TRUE,TRUE,TRUE

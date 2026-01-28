@@ -28,12 +28,11 @@ L.marker(PUEBLO_COORDS)
   .bindPopup("<b>Centro del pueblo</b><br>Mapa funcionando ✅");
 
 // Cargar alojamientos y pintarlos
-// ...existing code...
 export function agregarMarcadores(alojamientos) {
-  console.log("Agregando marcadores para:", alojamientos);  // Agrega esto
+  console.log("Agregando marcadores para:", alojamientos);  // 
   markersLayer.clearLayers();
   alojamientos.forEach(a => {
-    console.log("Agregando marcador:", a.nombre, a.lat, a.lng);  // Agrega esto
+    //console.log("Agregando marcador:", a.nombre, a.lat, a.lng); 
     if (isNaN(a.lat) || isNaN(a.lng)) {
       console.error("Lat/lng inválidos para", a.nombre, a.lat, a.lng);
       return;
@@ -41,6 +40,6 @@ export function agregarMarcadores(alojamientos) {
     L.marker([a.lat, a.lng]).addTo(markersLayer)
       .bindPopup(`<b>${a.nombre}</b><br>${a.telefono}`);
   });
-  console.log("Marcadores agregados al layer");  // Agrega esto
+  console.log("Marcadores agregados al layer. Total: ", markersLayer.getLayers().length);  // 
 }
 
